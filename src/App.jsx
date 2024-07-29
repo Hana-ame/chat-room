@@ -1,13 +1,14 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Main from './components/Main';
-import Home from './components/Home';
-import About from './components/About';
+import Main from './layouts/Main';
+import Profile from './pages/Profile';
+import About from './pages/About';
 import Page404 from './components/Page404';
 import Sidebar from './components/Sidebar';
-import LoginPage from './components/LoginPage';
-import PrivateRoute from './components/PrivateRoute';
+import Login from './pages/Login';
+import Register from './pages/Register'
+import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -27,11 +28,14 @@ const App = () => {
             <Route path="/"
               element={<About />} />
             <Route path="/login"
-              element={<LoginPage />} />
-            <Route path="/home"
+              element={<Login />} />
+            <Route path="/register"
+              element={<Register />} />
+            <Route path="/profile"
               element={
                 <PrivateRoute>
-                  <Home />
+                  <Profile>为啥啥都没有</Profile>
+                  {/* <About /> */}
                 </PrivateRoute>
               } />
 
