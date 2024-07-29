@@ -1,9 +1,0 @@
-const.go
-
-*.db
-*.bin
-*.exe
-*.exe~
-
-*.md
-!note.md
