@@ -18,10 +18,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <nav className="flex-1 px-2 py-4 space-y-1">
             <Link to="/"
               className="block p-4 text-gray-900 hover:bg-gray-100">Home</Link>
-            <Link to="/about"
+            <Link to="/profile"
               className="block p-4 text-gray-900 hover:bg-gray-100">Profile</Link>
-            <Link to="/messages"
-              className="block p-4 text-gray-900 hover:bg-gray-100">Messages</Link>
+            {/* <Link to="/messages"
+              className="block p-4 text-gray-900 hover:bg-gray-100">Messages</Link> */}
             {/* Add more links as needed */}
           </nav>
         </div>
