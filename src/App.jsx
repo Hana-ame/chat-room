@@ -1,38 +1,37 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import NotFound from './components/NotFound';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
     <Router>
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className='flex h-screen'>
+        
+        <Sidebar 
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
+
+        <Routes>
+          <Route path="/"
+            element={<Home
+              isOpen={isOpen}
+            />} />
+          <Route path="/about"
+            element={<About />} />
+          <Route path="*"
+            element={<NotFound />} />
+        </Routes>
+        
+      </div>
     </Router>
   );
 };
-
-
-const Layout = () => {
-  return (    
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/about">about</Link>
-      </li>
-      <li>
-        <Link to="/404">TODO</Link>
-      </li>
-    </ul>
-  )
-}
 
 export default App;
