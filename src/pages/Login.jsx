@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCookiesAsMap } from '../Tools/WebappUtils';
-import { apiV1Login } from '../functions/profile_loader';
+import { apiV1Login } from '../functions/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');

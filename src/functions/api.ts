@@ -24,3 +24,15 @@ export function apiV1Login({ email, password }: { email: string, password: strin
     credentials: 'include', // 这确保cookie会被发送和接收
   });
 }
+
+export function apiV1Register({ email, username, password }: { email: string, username: string, password: string }) {
+  return fetch('/api/v1/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, username, password }),
+  });
+  
+}
+

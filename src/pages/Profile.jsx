@@ -1,7 +1,7 @@
 // Home.js
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { profileLoader } from '../functions/profile_loader';
+import { profileLoader } from '../functions/api';
 import Session from '../components/Session';
 
 const Profile = () => {

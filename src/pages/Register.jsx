@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { apiV1Register } from '../functions/api';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -28,17 +29,10 @@ const Register = () => {
     
     try {
       // 调用API进行注册
-      const response = await fetch('/api/v1/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, username, password }),
-      });
-  
+      const response = await apiV1Register({email, username, password})
       if (response.ok) {
         // 注册成功
-        navigate('/profile');
+        navigate('/login');
       } else {
         // 注册失败
         const errorData = await response.json();

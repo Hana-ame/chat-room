@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { apiV1DeleteSession } from '../functions/profile_loader';
+import { apiV1DeleteSession } from '../functions/api';
 // import classNames from 'classnames';
 
 const Session = ({ session }) => {
