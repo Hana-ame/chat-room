@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
 import Register from './pages/Register'
 import PrivateRoute from './routes/PrivateRoute';
+import Postman from './functions/Postman';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -41,6 +42,9 @@ const App = () => {
 
             <Route path="*"
               element={<Page404 />} />
+
+            <Route path="/postman"
+              element={<Postman></Postman>}></Route>
           </Routes>
         </Main>
       </div>
