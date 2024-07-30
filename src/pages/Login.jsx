@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCookiesAsMap } from '../Tools/WebappUtils';
+import { apiV1Login } from '../functions/profile_loader';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,19 +22,13 @@ const Login = () => {
 
     try {
       // 调用API进行登录
-      const response = await fetch('/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: 'include', // 这确保cookie会被发送和接收
-      });
+      const response = await apiV1Login({email, password})
 
       if (!response.ok) {
         // 登录失败
         const errorData = await response.json();
         alert(errorData.error || '登录失败，请检查用户名和密码');
+        return
       }
       
       // 登录成功
@@ -46,8 +41,8 @@ const Login = () => {
       } else {
         console.log('登录可能成功，但未找到sessionId cookie');
         alert('登录状态异常，请重试');
+        return
       }
-
     } catch (error) {
       console.error('登录过程中发生错误:', error);
       alert('登录过程中发生错误，请稍后重试');
