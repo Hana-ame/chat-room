@@ -1,7 +1,7 @@
 // Home.js
 import React from 'react';
 import classNames from 'classnames';
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 
 const Main = ({ children, isOpen }) => {
   return (

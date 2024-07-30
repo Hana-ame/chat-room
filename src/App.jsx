@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Main from './layouts/Main';
 import Profile from './pages/Profile';
 import About from './pages/About';
@@ -9,13 +9,14 @@ import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
 import Register from './pages/Register'
 import PrivateRoute from './routes/PrivateRoute';
-import Postman from './functions/Postman';
+import Postman from './Tools/Postman';
+import { profileLoader } from './functions/profile_loader';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className='flex h-screen'>
 
         <Sidebar
@@ -33,10 +34,10 @@ const App = () => {
             <Route path="/register"
               element={<Register />} />
             <Route path="/profile"
+              loader={profileLoader}
               element={
                 <PrivateRoute>
-                  <Profile>为啥啥都没有</Profile>
-                  {/* <About /> */}
+                  <Profile />
                 </PrivateRoute>
               } />
 
@@ -48,7 +49,7 @@ const App = () => {
           </Routes>
         </Main>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 

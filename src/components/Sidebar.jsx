@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 // import { Transition } from '@headlessui/react'; // For animations
 // import { XIcon, MenuIcon } from '@heroicons/react/outline'; // For icons

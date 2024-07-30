@@ -3,23 +3,54 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { getCookiesAsMap } from '../Tools/WebappUtils';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // 这里模拟登录验证，实际情况需要调用 API 进行验证
-    if (username === 'admin' && password === 'password') {
-      // 登录成功，设置用户身份信息
-      localStorage.setItem('isLoggedIn', true);
-      navigate('/profile'); // 跳转到主页
-    } else {
-      // 登录失败，显示错误提示
-      alert('用户名或密码错误');
+    // 检查用户名和密码是否已填写
+    if (!(email && password)) {
+      alert('请填写邮箱和密码');
+      return;
+    }
+
+    try {
+      // 调用API进行登录
+      const response = await fetch('/api/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include', // 这确保cookie会被发送和接收
+      });
+
+      if (!response.ok) {
+        // 登录失败
+        const errorData = await response.json();
+        alert(errorData.error || '登录失败，请检查用户名和密码');
+      }
+      
+      // 登录成功
+      // 检查cookie是否已设置
+      const cookies = getCookiesAsMap(document)
+      console.log(cookies)
+      if (cookies.has("session_id")) {
+        console.log('登录成功，session_id cookie已设置');
+        navigate('/profile');
+      } else {
+        console.log('登录可能成功，但未找到sessionId cookie');
+        alert('登录状态异常，请重试');
+      }
+
+    } catch (error) {
+      console.error('登录过程中发生错误:', error);
+      alert('登录过程中发生错误，请稍后重试');
     }
   };
 
@@ -33,18 +64,19 @@ const Login = () => {
         <div className="font-bold text-xl mb-2">登录</div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-              用户名
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="用户名"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                邮箱
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email"
+                type="email"
+                placeholder="邮箱"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               密码

@@ -40,3 +40,7 @@ npm install http-proxy-middleware --save-dev
 
 pacakge，json当中不是必须的。
 用env就很可以
+
+ts
+npm install --save-dev typescript @types/react @types/react-dom @types/node
+加入tsconfig.json后，正常被读取

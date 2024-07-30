@@ -13,23 +13,41 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // 检查用户名是否只包含字母和数字
-    const usernamePattern = /^[a-zA-Z0-9]+$/;
-
     // 模拟注册验证，实际情况需要调用 API 进行注册
     if (!(email && username && password)) {      
       // 注册失败，显示错误提示
       alert('请填写邮箱、用户名和密码');
       return;
     }
+    // 检查用户名是否只包含字母和数字
+    const usernamePattern = /^[a-zA-Z0-9]+$/;
     if (!usernamePattern.test(username)) {
       alert('用户名只能包含字母和数字');
       return;
     } 
     
-    // 注册成功，设置用户身份信息
-    localStorage.setItem('isLoggedIn', true);
-    navigate('/profile'); // 跳转到主页 
+    try {
+      // 调用API进行注册
+      const response = await fetch('/api/v1/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, username, password }),
+      });
+  
+      if (response.ok) {
+        // 注册成功
+        navigate('/profile');
+      } else {
+        // 注册失败
+        const errorData = await response.json();
+        alert(errorData.error || '注册失败,请稍后重试');
+      }
+    } catch (error) {
+      console.error('注册过程中发生错误:', error);
+      alert('注册过程中发生错误,请稍后重试');
+    }
   };
 
   return (
