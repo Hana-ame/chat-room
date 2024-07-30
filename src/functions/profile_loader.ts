@@ -7,12 +7,11 @@ export async function profileLoader() {
   return response.json()
 }
 
-export async function deleteSessionById(id: string) {
-  const response = await fetch(`/api/v1/session/${id}`, {
+export function apiV1DeleteSession(id: string) {
+  return fetch(`/api/v1/session/${id}`, {
     method: 'DELETE',
     credentials: 'include', // 这确保cookie会被发送和接收
   });
-  return response.ok
 }
 
 export function apiV1Login({ email, password }: { email: string, password: string }) {
