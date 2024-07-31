@@ -49,7 +49,7 @@ const Register = () => {
       "flex items-center justify-center",
       "bg-gray-100",
     ])}>
-      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg rounded-lg lg:w-1/3">
+      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg rounded-lg lg:w-1/2">
         <div className="font-bold text-xl mb-2">注册</div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

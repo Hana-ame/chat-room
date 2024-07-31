@@ -31,7 +31,7 @@ const Profile = () => {
   if (error) return <Navigate to="/login" />;
 
   return (
-    <div className="bg-gray-800 text-white p-4 m-2 rounded shadow-md w-full overflow-scroll">
+    <div className="bg-gray-800 text-white p-4 m-2 rounded shadow-md overflow-scroll">
 
       <table className="table-auto w-full">
         <thead>
