@@ -1,12 +1,9 @@
 import './App.css';
-import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Layout from './layouts/Layout';
-import Main from './layouts/Main';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import Page404 from './components/Page404';
-import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './routes/PrivateRoute';

@@ -11,7 +11,7 @@ const Layout = () => {
       <header className="bg-white shadow-md p-4 flex justify-between items-center lg:hidden">
         <h1 className="text-xl font-bold">Your App Name</h1>
         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-500 hover:text-gray-700">
-          {isOpen ? 'close menu' : 'open menu'}
+          {isOpen ? 'Close Menu' : 'Open Menu'}
         </button>
       </header>
       <div className="flex flex-1 overflow-hidden">

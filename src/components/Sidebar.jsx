@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <div className="p-4 border-b flex justify-between items-center lg:justify-center">
           <h2 className="text-xl font-semibold">Menu</h2>
           <button onClick={() => setIsOpen(false)} className="lg:hidden text-gray-500 hover:text-gray-700">
-            {"close menu"}
+            {"Close Menu"}
           </button>
         </div>
         <nav className="flex-1 overflow-auto">
