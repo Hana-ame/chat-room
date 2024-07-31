@@ -31,15 +31,27 @@ const Profile = () => {
   if (error) return <Navigate to="/login" />;
 
   return (
-    <div className={classNames([
-      "flex items-center justify-center",
-      // "min-h-screen",
-      "bg-gray-1000",
-    ])}>
-      在哪呢
-      {sessions.map((session) => {
-        return <Session session={session} />
-      })}
+    <div className="bg-gray-800 text-white p-4 m-2 rounded shadow-md w-full overflow-scroll">
+
+      <table className="table-auto w-full">
+        <thead>
+          <tr>
+            {/* <th className="px-4 py-2">SessionID</th> */}
+            {/* <th className="px-4 py-2">Username</th> */}
+            <th className="px-4 py-2">LoginTime</th>
+            <th className="px-4 py-2">Country</th>
+            <th className="px-4 py-2">IPAddress</th>
+            <th className="px-4 py-2">UserAgent</th>
+            <th className="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sessions.map((session) => {
+            return <Session session={session} />
+          })}          
+        </tbody>
+      </table>
+
     </div>
   );
 };

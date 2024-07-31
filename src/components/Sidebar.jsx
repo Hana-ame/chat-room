@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import { Transition } from '@headlessui/react'; // For animations
 // import { XIcon, MenuIcon } from '@heroicons/react/outline'; // For icons
 const Sidebar = ({ isOpen, setIsOpen }) => {
+  
   const linkClass = "block p-4 text-gray-900 hover:bg-gray-100";
 
   return (
@@ -22,8 +23,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <nav className="flex-1 overflow-auto">
           <Link to="/" className={linkClass} onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/profile" className={linkClass} onClick={() => setIsOpen(false)}>Profile</Link>
-          <Link to="/register" className={linkClass} onClick={() => setIsOpen(false)}>Register</Link>
-          <Link to="/login" className={linkClass} onClick={() => setIsOpen(false)}>Login</Link>
+          <Link to="/register" className={linkClass} onClick={() => setIsOpen(false)}>Register(不会正式出现)</Link>
+          <Link to="/login" className={linkClass} onClick={() => setIsOpen(false)}>Login(不会正式出现)</Link>
         </nav>
       </div>
     </aside>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { apiV1DeleteSession } from '../functions/api';
 // import classNames from 'classnames';
+import Mtd from './TruncateTd';
 
 const Session = ({ session }) => {
   const [deleted, setDeleted] = useState(false);
@@ -14,18 +15,34 @@ const Session = ({ session }) => {
 
   if (deleted) return null; // 返回 null 以隐藏组件
 
+
+  const tdClass = "border px-4 py-2 truncate overflow-x-scroll text-ellipsis"
   return (
-    <div key={session.session_id} className="bg-gray-800 text-white p-4 m-2 rounded shadow-md w-full max-w-md">
-      <p><strong>SessionID:</strong> {session.session_id}</p>
-      <p><strong>Username:</strong> {session.username}</p>
-      <p><strong>LoginTime:</strong> {new Date(session.login_time).toLocaleString()}</p>
-      <p><strong>Country:</strong> {session.country.trim() || '未知'}</p>
-      <p><strong>IPAddress:</strong> {session.ip_address || '未知'}</p>
-      <p><strong>UserAgent:</strong> {session.user_agent}</p>
-      <button onClick={handleDelete} className="mt-2 bg-red-600 text-white p-2 rounded">
-        删除会话
-      </button>
-    </div>
+    <tr>
+      {/* <Mtd className={tdClass} num={15}>
+        {session.session_id}
+      </Mtd>
+      <Mtd className={tdClass} num={15}>
+        {session.username}
+      </Mtd> */}
+      <Mtd className={tdClass} num={30}>
+        {new Date(session.login_time).toLocaleString()}
+      </Mtd>
+      <Mtd className={tdClass} num={10}>
+        {session.country.trim() || '未知'}
+      </Mtd>
+      <Mtd className={tdClass} num={15}>
+        {session.ip_address || '未知'}
+      </Mtd>
+      <Mtd className={tdClass} num={30}>
+        {session.user_agent}
+      </Mtd>
+      <Mtd className={tdClass}>
+        <button onClick={handleDelete} className="bg-red-600 text-white p-2 rounded">
+          删除会话
+        </button>
+      </Mtd>
+    </tr>
   );
 };
 
