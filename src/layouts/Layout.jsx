@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex flex-col h-screen">
@@ -15,10 +15,10 @@ const Layout = () => {
         </button>
       </header>
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="flex-1 overflow-auto p-4 bg-gray-100">
           <Outlet />
         </main>
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
   );
