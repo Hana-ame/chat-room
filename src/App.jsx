@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Layout from './layouts/Layout';
 import Main from './layouts/Main';
 import Profile from './pages/Profile';
 import About from './pages/About';
@@ -10,19 +11,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './routes/PrivateRoute';
 import Postman from './Tools/Postman';
-
-const Layout = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div className='flex h-screen'>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Main isOpen={isOpen}>
-        <Outlet />
-      </Main>
-    </div>
-  );
-};
 
 const router = createBrowserRouter([
   {
