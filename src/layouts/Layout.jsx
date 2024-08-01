@@ -17,10 +17,19 @@ const Layout = () => {
       </header>
 
       <div className="flex flex-1">
-        <main className="flex-1 p-4 bg-gray-100 max-w-full">
+        {/* 为什么加了w-64就好了 @240801 */}
+        <main className="flex-1 flex-wrap p-4 bg-gray-100 max-w-full w-64">
           <Outlet />
         </main>
-        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Sidebar className={`
+            fixed inset-y-0 right-0 z-30 min-w-64 
+            bg-white shadow-lg 
+            transform transition-transform duration-300 ease-in-out
+            ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+            lg:relative lg:translate-x-0
+          `}
+          isOpen={isOpen} setIsOpen={setIsOpen}
+        />
       </div>
     </div>
   );

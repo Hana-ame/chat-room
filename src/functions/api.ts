@@ -1,5 +1,7 @@
+// 240801
+
 // it doesnt work, dunno why.
-export async function profileLoader() {
+export async function apiV1Sessions() {
   const response = await fetch('/api/v1/sessions', {
     method: 'GET',
     credentials: 'include', // 这确保cookie会被发送和接收

@@ -1,18 +1,16 @@
+// Sidebar.jsx @ 240801
+
 import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import { Transition } from '@headlessui/react'; // For animations
 // import { XIcon, MenuIcon } from '@heroicons/react/outline'; // For icons
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ className, setIsOpen }) => {
   
   const linkClass = "block p-4 text-gray-900 hover:bg-gray-100";
 
   return (
-    <aside className={`
-      fixed inset-y-0 right-0 z-30 min-w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
-      ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-      lg:relative lg:translate-x-0
-    `}>
+    <aside className={className}>
       <div className="flex flex-col h-full">
         <div className="p-4 border-b flex justify-between items-center lg:justify-center">
           <h2 className="text-xl font-semibold">Menu</h2>

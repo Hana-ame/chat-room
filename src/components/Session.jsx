@@ -1,7 +1,10 @@
+// Session.jsx @ 240731
+// 横向滚动 @ 240801
+
 import React, { useState } from 'react';
 import { apiV1DeleteSession } from '../functions/api';
 // import classNames from 'classnames';
-import Mtd from './TruncateTd';
+import Mtd from './TruncatedTd';
 
 const Session = ({ session }) => {
   const [deleted, setDeleted] = useState(false);

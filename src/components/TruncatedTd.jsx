@@ -1,3 +1,4 @@
+// TruncatedTd.jsx @ 240801
 import { truncateString } from "../Tools/utils"
 
 const TruncatedTd = ({ className, children, num }) => {
