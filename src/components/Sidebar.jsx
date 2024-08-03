@@ -23,6 +23,7 @@ const Sidebar = ({ className, setIsOpen }) => {
           <Link to="/profile" className={linkClass} onClick={() => setIsOpen(false)}>Profile</Link>
           <Link to="/register" className={linkClass} onClick={() => setIsOpen(false)}>Register(不会正式出现)</Link>
           <Link to="/login" className={linkClass} onClick={() => setIsOpen(false)}>Login(不会正式出现)</Link>
+          <Link to="/post" className={linkClass} onClick={() => setIsOpen(false)}>Post</Link>
         </nav>
       </div>
     </aside>

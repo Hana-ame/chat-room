@@ -1,6 +1,9 @@
 // 240801
 
-// it doesnt work, dunno why.
+// 定义 Visibility 类型
+export type Visibility = 'public' | 'unlisted' | 'private' | 'direct';
+
+// ~~it doesnt work, dunno why.~~
 export async function apiV1Sessions() {
   const response = await fetch('/api/v1/sessions', {
     method: 'GET',
@@ -38,3 +41,21 @@ export function apiV1Register({ email, username, password }: { email: string, us
   
 }
 
+export function apiV1CreateStatus({
+  content,
+  warning = '',
+  visibility = 'public',
+}: {
+  content: string;
+  warning?: string;
+  visibility?: Visibility;
+}) {
+  return fetch('/api/v1/status/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ content, warning, visibility }),
+    credentials: 'include', // 确保 cookie 被发送和接收
+  });
+}

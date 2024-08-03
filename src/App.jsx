@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './routes/PrivateRoute';
 import Postman from './Tools/Postman';
+import PostStatus from './pages/PostStatus';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <PrivateRoute><Profile /></PrivateRoute>
+      },
+      {
+        path: 'post',
+        element: <PostStatus />
       },
       {
         path: 'postman',
