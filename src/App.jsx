@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import PrivateRoute from './routes/PrivateRoute';
 import Postman from './Tools/Postman';
 import PostStatus from './pages/PostStatus';
+import StatusList from './components/StatusList';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'post',
         element: <PostStatus />
+      },
+      {
+        path: 'statuses',
+        element: <StatusList></StatusList>
       },
       {
         path: 'postman',

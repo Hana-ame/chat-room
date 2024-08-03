@@ -2,13 +2,17 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { apiV1CreateStatus } from '../functions/api'; // 确保这个函数已经定义并导出
 import classNames from 'classnames';
+
+import { Visibility } from '../functions/types';
+import { apiV1CreateStatus } from '../functions/api'; // 确保这个函数已经定义并导出
+import { isVisibility } from '../functions/utils'; // 确保这个函数已经定义并导出
+
 
 const PostStatus = () => {
   const [content, setContent] = useState('');
   const [warning, setWarning] = useState('');
-  const [visibility, setVisibility] = useState('public'); // 默认设置为公开
+  const [visibility, setVisibility] = useState<Visibility>('public'); // 默认设置为公开
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -83,7 +87,7 @@ const PostStatus = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="visibility"
               value={visibility}
-              onChange={(e) => setVisibility(e.target.value)}
+              onChange={(e) => setVisibility(isVisibility(e.target.value)? e.target.value : 'public')}
             >
               <option value="public">公开</option>
               <option value="private">私密</option>
