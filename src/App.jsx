@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'post',
-        element: <PostStatus />
+        element: <PrivateRoute><PostStatus /></PrivateRoute>
       },
       {
         path: 'statuses',
